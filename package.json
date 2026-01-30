@@ -7,7 +7,10 @@
     "dev": "npm run dev --prefix server & node static-server.js 8080",
     "server": "npm run dev --prefix server",
     "frontend": "node static-server.js 8080",
-    "start": "npm run server"
+    "start": "npm run server",
+    "verify": "node verify-all.js",
+    "health-check": "node health-check.js",
+    "test-server": "node test-server.js"
   },
   "keywords": ["sre", "monitoring", "logs"],
   "author": "",
