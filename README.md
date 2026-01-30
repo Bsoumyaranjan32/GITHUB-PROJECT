@@ -61,8 +61,45 @@ Built for speed, aesthetics, and performance.
     };
     ```
 
-3.  **Run It**
-    Simply open `index.html` in any modern browser! No build step required—it's that efficient.
+3.  **Verify All Processes**
+    Check that everything is working:
+    ```bash
+    npm run verify
+    ```
+    This runs comprehensive health checks on all components.
+
+4.  **Run It**
+    Start the static server:
+    ```bash
+    npm run frontend
+    ```
+    Then open `http://localhost:8080` in your browser!
+
+---
+
+## ✅ Process Verification
+
+WhyLayer includes automated verification tools to check that all processes are working correctly.
+
+### Quick Verification
+```bash
+# Run all checks
+npm run verify
+
+# Individual checks
+npm run health-check  # Component health check
+npm run test-server   # Server functionality test
+```
+
+### What Gets Verified
+- ✓ Frontend static server functionality
+- ✓ JavaScript modules (app.js, neural.js, voice.js, data.js)
+- ✓ Environment configuration
+- ✓ HTML structure and dependencies
+- ✓ API configuration
+- ✓ Package scripts
+
+See [PROCESS_VERIFICATION.md](PROCESS_VERIFICATION.md) for detailed documentation.
 
 ---
 
