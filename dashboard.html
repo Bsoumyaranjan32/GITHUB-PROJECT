@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WhyLayer Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background: #09090B; color: white; font-family: Arial; }
+    .card { background: #18181B; border: 1px solid #27272A; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+    .card:hover { border-color: #6366f1; box-shadow: 0 20px 40px rgba(99,102,241,0.3); transform: translateY(-4px); transition: all 0.3s; }
+    .status-green { background: rgba(34,197,94,0.1); border: 2px solid #22c55e; }
+    .status-yellow { background: rgba(234,179,8,0.1); border: 2px solid #eab308; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  </style>
+</head>
+<body class="p-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-6xl font-bold mb-3" style="background: linear-gradient(to right, #818cf8, #c084fc, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔮 WhyLayer</h1>
+      <p class="text-2xl text-gray-400">System Intelligence Dashboard</p>
+    </div>
+    <div class="card status-green mb-8">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <span class="text-6xl pulse">✅</span>
+          <div>
+            <h2 class="text-3xl font-bold" style="color: #22c55e;">System Healthy</h2>
+            <p class="text-gray-400">All services operational</p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-500">Current Time</p>
+          <p class="text-xl font-mono" id="time"></p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-4 gap-6 mb-8">
+      <div class="card">
+        <i class="fas fa-server text-4xl mb-3" style="color: #60a5fa;"></i>
+        <p class="text-gray-400 text-sm">Active Services</p>
+        <p class="text-5xl font-bold">4/4</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-clock text-4xl mb-3" style="color: #a78bfa;"></i>
+        <p class="text-gray-400 text-sm">Response Time</p>
+        <p class="text-5xl font-bold">45<span class="text-xl">ms</span></p>
+      </div>
+      <div class="card">
+        <i class="fas fa-check-circle text-4xl mb-3" style="color: #22c55e;"></i>
+        <p class="text-gray-400 text-sm">Uptime</p>
+        <p class="text-5xl font-bold">99.9<span class="text-xl">%</span></p>
+      </div>
+      <div class="card">
+        <i class="fas fa-exclamation-triangle text-4xl mb-3" style="color: #eab308;"></i>
+        <p class="text-gray-400 text-sm">Alerts (24h)</p>
+        <p class="text-5xl font-bold">3</p>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="text-3xl font-bold mb-6"><i class="fas fa-map-marked-alt mr-3" style="color: #818cf8;"></i>Service Health Map</h2>
+      <div class="grid grid-cols-2 gap-6">
+        <div class="card status-green">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-4">
+              <span class="text-5xl">🗄️</span>
+              <div>
+                <h3 class="text-2xl font-bold">Database</h3>
+                <p class="text-sm font-bold" style="color: #22c55e;">Healthy</p>
+              </div>
+            </div>
+            <span class="text-4xl pulse">🟢</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div><p class="text-gray-400">Latency</p><p class="text-lg font-bold">12ms</p></div>
+            <div><p class="text-gray-400">CPU</p><p class="text-lg font-bold">34%</p></div>
+            <div><p class="text-gray-400">Connections</p><p class="text-lg font-bold">145/500</p></div>
+            <div><p class="text-gray-400">Memory</p><p class="text-lg font-bold">2.1GB</p></div>
+          </div>
+        </div>
+        <div class="card status-green">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-4">
+              <span class="text-5xl">🌐</span>
+              <div>
+                <h3 class="text-2xl font-bold">API Gateway</h3>
+                <p class="text-sm font-bold" style="color: #22c55e;">Healthy</p>
+              </div>
+            </div>
+            <span class="text-4xl pulse">🟢</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div><p class="text-gray-400">Latency</p><p class="text-lg font-bold">8ms</p></div>
+            <div><p class="text-gray-400">Requests/min</p><p class="text-lg font-bold">1,247</p></div>
+            <div><p class="text-gray-400">Success Rate</p><p class="text-lg font-bold">99.8%</p></div>
+            <div><p class="text-gray-400">Errors</p><p class="text-lg font-bold">2</p></div>
+          </div>
+        </div>
+        <div class="card status-yellow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-4">
+              <span class="text-5xl">🔐</span>
+              <div>
+                <h3 class="text-2xl font-bold">Auth Service</h3>
+                <p class="text-sm font-bold" style="color: #eab308;">Degraded ⚠️</p>
+              </div>
+            </div>
+            <span class="text-4xl pulse">🟡</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div><p class="text-gray-400">Latency</p><p class="text-lg font-bold" style="color: #eab308;">156ms ⚠️</p></div>
+            <div><p class="text-gray-400">CPU</p><p class="text-lg font-bold" style="color: #eab308;">78%</p></div>
+            <div><p class="text-gray-400">Pool Size</p><p class="text-lg font-bold" style="color: #ef4444;">10/10 🔴</p></div>
+            <div><p class="text-gray-400">Queue</p><p class="text-lg font-bold">23</p></div>
+          </div>
+        </div>
+        <div class="card status-green">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-4">
+              <span class="text-5xl">💳</span>
+              <div>
+                <h3 class="text-2xl font-bold">Payment</h3>
+                <p class="text-sm font-bold" style="color: #22c55e;">Healthy</p>
+              </div>
+            </div>
+            <span class="text-4xl pulse">🟢</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div><p class="text-gray-400">Latency</p><p class="text-lg font-bold">22ms</p></div>
+            <div><p class="text-gray-400">Transactions</p><p class="text-lg font-bold">$12.4K</p></div>
+            <div><p class="text-gray-400">Success Rate</p><p class="text-lg font-bold">99.9%</p></div>
+            <div><p class="text-gray-400">Failed</p><p class="text-lg font-bold">1</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="text-3xl font-bold mb-6"><i class="fas fa-robot mr-3" style="color: #a78bfa;"></i>AI Root Cause Analysis</h2>
+      <div class="card" style="background: rgba(168,85,247,0.1); border: 2px solid #a78bfa;">
+        <div class="flex items-start gap-4">
+          <span class="text-5xl">🤖</span>
+          <div>
+            <h3 class="text-xl font-bold mb-3" style="color: #c084fc;">Analysis Complete</h3>
+            <p class="text-gray-300 mb-3"><strong>Root Cause:</strong> Auth Service connection pool saturated (10/10). Queue building up with 23 pending requests.</p>
+            <p class="text-gray-300 mb-4"><strong>Impact:</strong> User login delays averaging 3-5 seconds.</p>
+            <div class="card mb-4" style="background: rgba(0,0,0,0.3);">
+              <p class="text-gray-400 text-sm mb-1">💡 Recommendation:</p>
+              <p class="font-bold">Increase connection pool from 10 to 25 connections</p>
+              <p class="text-sm text-gray-400 mt-2">Fix time: <span style="color: #22c55e;">~2 minutes</span></p>
+            </div>
+            <button class="px-6 py-3 rounded-lg font-bold" style="background: #a78bfa; color: white;" onmouseover="this.style.background='#8b5cf6'" onmouseout="this.style.background='#a78bfa'">
+              <i class="fas fa-play mr-2"></i>Apply Fix Automatically
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="text-3xl font-bold mb-6"><i class="fas fa-history mr-3" style="color: #f472b6;"></i>Recent Incidents</h2>
+      <div class="card mb-4" style="background: rgba(239,68,68,0.05); border-left: 4px solid #ef4444;">
+        <div class="flex items-center gap-6">
+          <span class="text-5xl">🔴</span>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold mb-1">Payment Gateway Timeout</h3>
+            <p class="text-sm text-gray-400">Database connection lost for 45 seconds</p>
+            <p class="text-xs text-gray-500 mt-1"><i class="far fa-clock mr-1"></i>2 minutes ago • Duration: 45s</p>
+          </div>
+          <button class="px-4 py-2 rounded-lg font-bold" style="background: #6366f1; color: white;">
+            <i class="fas fa-play mr-2"></i>Replay
+          </button>
+        </div>
+      </div>
+      <div class="card mb-4" style="background: rgba(234,179,8,0.05); border-left: 4px solid #eab308;">
+        <div class="flex items-center gap-6">
+          <span class="text-5xl">🟡</span>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold mb-1">High API Latency</h3>
+            <p class="text-sm text-gray-400">Response time spike detected</p>
+            <p class="text-xs text-gray-500 mt-1"><i class="far fa-clock mr-1"></i>15 minutes ago • Duration: 2m 13s</p>
+          </div>
+          <button class="px-4 py-2 rounded-lg font-bold" style="background: #6366f1; color: white;">
+            <i class="fas fa-play mr-2"></i>Replay
+          </button>
+        </div>
+      </div>
+      <div class="card" style="background: rgba(34,197,94,0.05); border-left: 4px solid #22c55e;">
+        <div class="flex items-center gap-6">
+          <span class="text-5xl">🟢</span>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold mb-1">System Recovered</h3>
+            <p class="text-sm text-gray-400">All services back to normal</p>
+            <p class="text-xs text-gray-500 mt-1"><i class="far fa-clock mr-1"></i>1 hour ago</p>
+          </div>
+          <button class="px-4 py-2 rounded-lg font-bold" style="background: #52525B; color: white;">
+            <i class="fas fa-eye mr-2"></i>View
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="env.js"></script>
+  <script>
+    console.log('✅ WhyLayer Dashboard Working!');
+    function updateTime() {
+      document.getElementById('time').textContent = new Date().toLocaleTimeString();
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
