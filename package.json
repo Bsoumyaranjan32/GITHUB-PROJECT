@@ -1,0 +1,15 @@
+{
+  "name": "whylayer",
+  "version": "1.0.0",
+  "description": "WhyLayer - System Intelligence Platform",
+  "main": "app.js",
+  "scripts": {
+    "dev": "npm run dev --prefix server & node static-server.js 8080",
+    "server": "npm run dev --prefix server",
+    "frontend": "node static-server.js 8080",
+    "start": "npm run server"
+  },
+  "keywords": ["sre", "monitoring", "logs"],
+  "author": "",
+  "license": "MIT"
+}
